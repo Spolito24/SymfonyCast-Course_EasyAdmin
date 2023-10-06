@@ -41,6 +41,9 @@ class QuestionCrudController extends AbstractCrudController
                $queryBuilder->andWhere('entity.enabled = :enabled')
                    ->setParameter('enabled', true);
             });
+        yield AssociationField::new('answers')
+            ->setFormTypeOption('choice_label', 'id')
+            ->setFormTypeOption('by_reference', false);
         yield Field::new('createdAt')
             ->hideOnForm();
     }
